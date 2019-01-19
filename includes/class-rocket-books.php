@@ -67,12 +67,20 @@ class Rocket_Books {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'PLUGIN_NAME_VERSION' ) ) {
-			$this->version = PLUGIN_NAME_VERSION;
+
+		if ( defined( 'ROCKET_BOOKS_VERSION' ) ) {
+			$this->version = ROCKET_BOOKS_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'rocket-books';
+
+		if ( defined( 'ROCKET_BOOKS_NAME' ) ) {
+			$this->plugin_name = ROCKET_BOOKS_NAME;
+		} else {
+			$this->plugin_name = 'rocket-books';
+		}
+
+
 
 		$this->load_dependencies();
 		$this->set_locale();
