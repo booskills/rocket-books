@@ -181,6 +181,9 @@ class Rocket_Books {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
+		$this->loader->add_action('init', $plugin_public , 'register_book_post_type');
+
+		$this->loader->add_action('init', $plugin_public , 'register_taxonomy_genre');
 	}
 
 	/**
