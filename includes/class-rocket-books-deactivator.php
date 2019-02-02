@@ -31,6 +31,13 @@ class Rocket_Books_Deactivator {
 	 */
 	public static function deactivate() {
 
+		// Un-register CPT
+
+		unregister_post_type('book');
+
+		// Flush Rewrite Rules
+		flush_rewrite_rules();
+
 	}
 
 }
