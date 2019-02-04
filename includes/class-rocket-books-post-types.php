@@ -15,7 +15,7 @@ class Rocket_Books_Post_Types {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @var      string $plugin_name The ID of this plugin.
 	 */
 	private $plugin_name;
 
@@ -24,7 +24,7 @@ class Rocket_Books_Post_Types {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @var      string $version The current version of this plugin.
 	 */
 	private $version;
 
@@ -32,13 +32,14 @@ class Rocket_Books_Post_Types {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 *
+	 * @param      string $plugin_name The name of the plugin.
+	 * @param      string $version The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
 	}
 
@@ -144,6 +145,30 @@ class Rocket_Books_Post_Types {
 			),
 			'capabilities'      => array(),
 		) );
+	}
+
+	/**
+	 * filter content for CPT: Book
+	 *
+	 * @param      mixed $the_content the content of the post/post type.
+	 */
+	public function content_single_book( $the_content ) {
+
+		// filter contents for just Books
+		if ( in_the_loop() && is_singular( 'book' ) ) {
+
+//			return "<pre>" . $the_content . "</pre>";
+
+			ob_start();
+			include ROCKET_BOOKS_BASE_DIR . 'templates/book-content.php';
+			return ob_get_clean();
+
+
+		}
+
+
+		return $the_content;
+
 	}
 
 
