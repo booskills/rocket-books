@@ -2,3 +2,113 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+
+/* Card Based Layout - Base styles */
+.cpt-card {
+    background: bisque;
+    margin-bottom: 2em;
+    padding: 1em;
+}
+
+.cpt-card a {
+    /*color: black;*/
+    text-decoration: none;
+    /*flex: 1;*/
+}
+
+.cpt-card a:hover {
+    text-decoration: none;
+}
+
+
+/*.cpt-card a:hover {*/
+/*box-shadow: 3px 3px 8px hsl(0, 0%, 70%);*/
+/*}*/
+
+.cpt-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.cpt-card-content h2 {
+    margin-top: 0;
+    margin-bottom: .5em;
+    font-weight: normal;
+    font-size: 1.5em;
+}
+
+.cpt-card-content p {
+    font-size: 95%;
+}
+
+/* Flexbox stuff */
+
+@media screen and (min-width: 40em) {
+
+    .cpt-cards {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;;
+        margin-top: -1em;
+
+    }
+
+    .cpt-card {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex: 0 1 calc(50% - .5em);
+        -ms-flex: 0 1 calc(50% - .5em);
+        flex: 0 1 calc(50% - .5em);
+        margin-bottom: 1em;
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 60em) {
+
+    .cpt-cards {
+        margin-top: inherit;
+        padding: 1em;
+    }
+
+
+    .column-three .cpt-card {
+        -webkit-flex: 0 1 calc(33% - 1em);
+        -ms-flex: 0 1 calc(33% - 1em);
+        flex: 0 1 calc(33% - 1em);
+        margin-bottom: 2em;
+    }
+
+    .column-two .cpt-card {
+        -webkit-flex: 0 1 calc(50% - 1em);
+        -ms-flex: 0 1 calc(50% - 1em);
+        flex: 0 1 calc(50% - 1em);
+        margin-bottom: 2em;
+    }
+
+
+    .column-four .cpt-card {
+        -webkit-flex: 0 1 calc(25% - 1em);
+        -ms-flex: 0 1 calc(25% - 1em);
+        flex: 0 1 calc(25% - 1em);
+        margin-bottom: 2em;
+    }
+
+    .column-five .cpt-card {
+        -webkit-flex: 0 1 calc(20% - 1em);
+        -ms-flex: 0 1 calc(20% - 1em);
+        flex: 0 1 calc(20% - 1em);
+        margin-bottom: 2em;
+    }
+
+
+}
