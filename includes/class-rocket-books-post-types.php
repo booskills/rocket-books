@@ -28,6 +28,9 @@ class Rocket_Books_Post_Types {
 	 */
 	private $version;
 
+
+	private $template_loader;
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -40,6 +43,8 @@ class Rocket_Books_Post_Types {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
+
+		$this->template_loader = $this->get_template_loader();
 
 	}
 
@@ -144,6 +149,7 @@ class Rocket_Books_Post_Types {
 				'hierarchical' => true,
 			),
 			'capabilities'      => array(),
+			'show_in_rest'      => true,
 		) );
 	}
 
@@ -180,17 +186,35 @@ class Rocket_Books_Post_Types {
 
 		if ( is_singular( 'book' ) ) {
 
-			// template for CPT book
-			require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-books-template-loader.php';
-
-			$template_loader = new Rocket_Books_Template_Loader();
-
-			return $template_loader->get_template_part('single', 'book' , false);
+			return $this->template_loader->get_template_part( 'single', 'book', false );
 
 		}
 
 		return $template;
 	}
 
+	/**
+	 * Archive Template for CPT: book
+	 */
+	public function archive_template_book( $template ) {
+
+		if ( is_post_type_archive( 'book' ) || is_tax('genre')) {
+
+			// template for CPT book
+
+			return $this->template_loader->get_template_part( 'archive', 'book', false );
+
+		}
+
+		return $template;
+	}
+
+	public function get_template_loader(){
+
+		require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-books-template-loader.php';
+
+		return new Rocket_Books_Template_Loader();
+
+	}
 
 }
