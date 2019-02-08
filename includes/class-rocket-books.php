@@ -252,6 +252,19 @@ class Rocket_Books {
 		$this->loader->add_filter( 'archive_template', $plugin_post_types , 'archive_template_book' );
 
 
+		/**
+		 * To add Metabox to CPT: book
+		 */
+//		$this->loader->add_action( 'add_meta_boxes_book', $plugin_post_types ,'register_metabox_book' , 10 , 1 );
+
+		/**
+		 * These loads to all post types
+		 */
+//		$this->loader->add_action( 'do_meta_boxes', $plugin_post_types ,'register_metabox_book' , 10 , 1 );
+
+//		$this->loader->add_action( 'add_meta_boxes', $plugin_post_types ,'register_metabox_book' , 10 , 2 );
+
+
 	}
 
 

@@ -95,7 +95,7 @@ class Rocket_Books_Post_Types {
 			'capabilities'         => array(),
 			'map_meta_cap'         => null,
 			'supports'             => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
-			'register_meta_box_cb' => null,
+			'register_meta_box_cb' => array( $this, 'register_metabox_book' ),
 			'taxonomies'           => array( 'genre' ),
 			'has_archive'          => true,
 			'rewrite'              => array(
@@ -198,7 +198,7 @@ class Rocket_Books_Post_Types {
 	 */
 	public function archive_template_book( $template ) {
 
-		if ( is_post_type_archive( 'book' ) || is_tax('genre')) {
+		if ( is_post_type_archive( 'book' ) || is_tax( 'genre' ) ) {
 
 			// template for CPT book
 
@@ -209,12 +209,41 @@ class Rocket_Books_Post_Types {
 		return $template;
 	}
 
-	public function get_template_loader(){
+	public function get_template_loader() {
 
 		require_once ROCKET_BOOKS_BASE_DIR . 'public/class-rocket-books-template-loader.php';
 
 		return new Rocket_Books_Template_Loader();
 
 	}
+
+	/**
+	 * Register Metabox for CPT: Book
+	 */
+	public function register_metabox_book( $post ) {
+
+		add_meta_box(
+			'book-details',
+			__('Book Details', 'rocket-books'),
+			array( $this, 'book_metabox_display_cb' ),  // function name for procedural
+			'book',
+			'normal',
+			'default'
+		);
+
+
+	}
+
+
+	/**
+	 * Display for Metabox for CPT: book
+	 */
+	public function book_metabox_display_cb( $post ) {
+
+		echo 'here, we shall display fields';
+
+
+	}
+
 
 }
