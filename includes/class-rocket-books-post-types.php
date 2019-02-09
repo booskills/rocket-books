@@ -288,6 +288,29 @@ class Rocket_Books_Post_Types {
 	 */
 	public function metabox_save_book( $post_id, $post, $update ) {
 
+//	    $current_user = wp_get_current_user();
+//	    $current_user->add_cap('edit_posts');
+
+
+		/**
+		 * Prevent saving if its triggered for:
+		 *  1. Auto save
+		 *  2. User does not have permission to edit
+		 *  3. invalid nonce
+		 */
+
+		// if this is an autosave, our form has not been submitted, so do nothing
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+
+
+		// check user permission
+		if ( ! current_user_can( 'edit_posts', $post_id ) ) {
+			print __('Sorry, you do not have access to edit post', 'rocket-books');
+			exit;
+		}
+
 
 	    // Verify Nonce
 		if (
@@ -302,6 +325,10 @@ class Rocket_Books_Post_Types {
 			exit;
 		}
 
+
+		/**
+		 * We are good to process data.
+		 */
 
 
 //	    var_export($_POST);
