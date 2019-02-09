@@ -248,6 +248,8 @@ class Rocket_Books_Post_Types {
 
 //		echo 'here, we shall display fields';
 
+        wp_nonce_field('rbr_meta_box_nonce_action' , 'rbr_meta_box_nonce');
+
 		?>
         <label for="rbr-book-pages"><?php
 			_e( 'Number of Pages', 'rocket-books' )
@@ -256,7 +258,7 @@ class Rocket_Books_Post_Types {
                 type="text"
                 name="rbr-book-pages"
                 class="widefat"
-                value="<?php echo get_post_meta( get_the_ID(), 'rbr_book_page', true ) ?>"
+                value="<?php echo get_post_meta( get_the_ID(), 'rbr_book_pages', true ) ?>"
         >
 
 
@@ -285,6 +287,21 @@ class Rocket_Books_Post_Types {
 	 * Saving Custom fields for CPT: book
 	 */
 	public function metabox_save_book( $post_id, $post, $update ) {
+
+
+	    // Verify Nonce
+		if (
+			! isset( $_POST['rbr_meta_box_nonce'] )
+			||
+			! wp_verify_nonce(
+				$_POST['rbr_meta_box_nonce'],
+				'rbr_meta_box_nonce_action'
+			)
+		) {
+			print __('Sorry, your nonce did not verify.', 'rocket-books');
+			exit;
+		}
+
 
 
 //	    var_export($_POST);
