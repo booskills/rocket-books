@@ -265,6 +265,19 @@ class Rocket_Books {
 //		$this->loader->add_action( 'add_meta_boxes', $plugin_post_types ,'register_metabox_book' , 10 , 2 );
 
 
+		/**
+		 * Save metabox for CPT : book
+		 */
+
+		$this->loader->add_action( 'save_post_book',
+			$plugin_post_types,
+			'metabox_save_book',
+			10,
+			3
+		);
+
+
+
 	}
 
 
