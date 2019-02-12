@@ -1,0 +1,96 @@
+/* Single Book Layout using Flexbox */
+
+/** Debug CSS start here
+
+
+.single-book-container {
+    background-color: aqua;
+}
+
+.book-meta-container {
+    background-color: lightgray;
+}
+
+.book-entry-content {
+    background-color: whitesmoke;
+}
+
+.book-entry-title {
+    background-color: palegoldenrod;
+}
+
+.book-meta-fields {
+    background: beige;
+}
+
+.book-meta-fields li {
+    background-color: lightskyblue;
+}
+
+*/
+/** End of Debug */
+
+/** Start of Layout */
+
+.single-book-container {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.book-entry-content {
+    padding: 2em;
+    justify-content: center;
+}
+
+.book-meta-container {
+    padding: 1em;
+}
+
+h1.book-entry-title {
+    font-size: 1.5em;
+    margin: 1em 0 0.5em;
+    text-align: center;
+}
+
+ul.book-meta-fields {
+    margin: 1em 0 0.5em !important;
+    padding: 0 !important;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+
+@media screen and (min-width: 40em) {
+    .book-meta-container {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex: 0 1 calc(25% - .5em);
+        -ms-flex: 0 1 calc(25% - .5em);
+        flex: 0 1 calc(25% - .5em);
+        margin-bottom: 1em;
+        flex-direction: column;
+    }
+
+
+    .book-entry-content {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex: 0 1 calc(75% - .5em);
+        -ms-flex: 0 1 calc(75% - .5em);
+        flex: 0 1 calc(75% - .5em);
+        margin-bottom: 1em;
+        flex-direction: column;
+        word-break: break-word;
+    }
+}
