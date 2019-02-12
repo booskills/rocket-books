@@ -248,7 +248,7 @@ class Rocket_Books_Post_Types {
 
 //		echo 'here, we shall display fields';
 
-        wp_nonce_field('rbr_meta_box_nonce_action' , 'rbr_meta_box_nonce');
+		wp_nonce_field( 'rbr_meta_box_nonce_action', 'rbr_meta_box_nonce' );
 
 		?>
         <label for="rbr-book-pages"><?php
@@ -260,11 +260,22 @@ class Rocket_Books_Post_Types {
                 class="widefat"
                 value="<?php echo get_post_meta( get_the_ID(), 'rbr_book_pages', true ) ?>"
         >
+        <label for="rbr-is-featured"><?php
+			_e( 'is Featured Book?', 'rocket-books' )
+			?></label>
+        <input
+                type="checkbox"
+                name="rbr-is-featured"
+                value="yes"
+			<?php checked(
+				get_post_meta( get_the_ID(), 'rbr_is_featured', true ),
+				"yes"
+			) ?>
+        />
 
 
 		<?php
-		echo esc_html(get_post_meta( get_the_ID(), 'rbr_book_pages', true ));
-
+//		echo esc_html(get_post_meta( get_the_ID(), 'rbr_book_pages', true ));
 
 
 //        <script>alert('hello');</script>
@@ -279,11 +290,6 @@ class Rocket_Books_Post_Types {
 //            '',
 //            ''   // true,
 //        );
-
-
-
-
-
 
 
 	}
@@ -313,12 +319,12 @@ class Rocket_Books_Post_Types {
 
 		// check user permission
 		if ( ! current_user_can( 'edit_posts', $post_id ) ) {
-			print __('Sorry, you do not have access to edit post', 'rocket-books');
+			print __( 'Sorry, you do not have access to edit post', 'rocket-books' );
 			exit;
 		}
 
 
-	    // Verify Nonce
+		// Verify Nonce
 		if (
 			! isset( $_POST['rbr_meta_box_nonce'] )
 			||
@@ -327,7 +333,7 @@ class Rocket_Books_Post_Types {
 				'rbr_meta_box_nonce_action'
 			)
 		) {
-            return null;
+			return null;
 
 //			print __('Sorry, your nonce did not verify.', 'rocket-books');
 //			exit;
@@ -348,7 +354,16 @@ class Rocket_Books_Post_Types {
 		update_post_meta(
 			$post_id,
 			'rbr_book_pages',
-			($_POST['rbr-book-pages']) // should be sanitized
+			absint( $_POST['rbr-book-pages'] ) // should be sanitized
+		);
+
+		// Sanitization :   We know the type
+        // Validation : We know what are expecting to recieve
+
+		update_post_meta(
+			$post_id,
+			'rbr_is_featured',
+            ( 'yes' === $_POST['rbr-is-featured']) ? 'yes' : 'no' // should be sanitized // yes / no
 		);
 
 
