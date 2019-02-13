@@ -22,6 +22,7 @@
 
     <div class="book-entry-content">
 		<?php
+        the_title('<h1 class="entry-title">' , '</h1>');
 		the_content();
 		?>
     </div><!-- .book-entry-content -->
