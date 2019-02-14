@@ -11,8 +11,4 @@
  * @package    Rocket_Books
  * @subpackage Rocket_Books/admin/partials
  */
-?>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
-
-<p>Hi, i am from partilas</p>
