@@ -100,4 +100,36 @@ class Rocket_Books_Admin {
 
 	}
 
+	/**
+	 * Add admin menu for our plugin
+	 */
+	public function add_admin_menu() {
+
+		// Top Level Menu
+		add_menu_page(
+			'Rocket Books Settings',
+			'Rocket Books',
+			'manage_options',
+			'rocket-books',
+			array($this, 'admin_page_display'),
+			'dashicons-chart-pie',
+			60
+		);
+
+
+		// Sub Menu
+
+
+	}
+
+	/**
+	 * Admin Page Display
+	 */
+	public function admin_page_display() {
+
+		include 'partials/rocket-books-admin-display.php';
+
+	}
+
+
 }

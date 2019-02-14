@@ -35,7 +35,7 @@ class Rocket_Books {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Rocket_Books_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Rocket_Books_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,7 +44,7 @@ class Rocket_Books {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
@@ -53,7 +53,7 @@ class Rocket_Books {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -79,7 +79,6 @@ class Rocket_Books {
 		} else {
 			$this->plugin_name = 'rocket-books';
 		}
-
 
 
 		$this->load_dependencies();
@@ -179,6 +178,12 @@ class Rocket_Books {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+		$this->loader->add_action(
+			'admin_menu',
+			$plugin_admin,
+			'add_admin_menu' );
+
+
 	}
 
 	/**
@@ -246,15 +251,15 @@ class Rocket_Books {
 	 */
 	public function define_post_type_hooks() {
 
-		$plugin_post_types = new Rocket_Books_Post_Types($this->get_plugin_name(), $this->get_version());
+		$plugin_post_types = new Rocket_Books_Post_Types( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'init', $plugin_post_types ,'init' );
+		$this->loader->add_action( 'init', $plugin_post_types, 'init' );
 
 //		$this->loader->add_filter('the_content' , $plugin_post_types , 'content_single_book');
 
-		$this->loader->add_filter( 'single_template', $plugin_post_types , 'single_template_book' );
+		$this->loader->add_filter( 'single_template', $plugin_post_types, 'single_template_book' );
 
-		$this->loader->add_filter( 'archive_template', $plugin_post_types , 'archive_template_book' );
+		$this->loader->add_filter( 'archive_template', $plugin_post_types, 'archive_template_book' );
 
 
 		/**
@@ -287,7 +292,6 @@ class Rocket_Books {
 			$plugin_post_types,
 			'register_cmb2_metabox_book'
 		);
-
 
 
 	}
