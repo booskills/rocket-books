@@ -428,13 +428,28 @@ class Rocket_Books_Post_Types {
 			'id'           => 'book-details',
 			'title'        => __( 'Book Details from CMB2', 'rocket-books' ),
 			'object_types' => array( 'book' ),
-			'context'      => 'side'
+			'context'      => 'normal'
 		) );
 
 		$metabox->add_field( array(
-			'id'   => 'rbr_book_pages',
-			'name' => __( 'Number of Pages', 'rocket-books' ),
-			'type' => 'text'
+			'id'              => 'rbr_book_pages',
+			'name'            => __( 'Number of Pages', 'rocket-books' ),
+			'type'            => 'text',
+			'sanitization_cb' => 'absint'
+		) );
+
+
+		$metabox->add_field( array(
+			'id'      => 'rbr_book_format',
+			'name'    => __( 'Book Format', 'rocket-books' ),
+			'type'    => 'select',
+			'options' => array(
+				'no-format' => __( 'Select Format', 'rocket-books' ),
+				'hardcover' => __( 'Hardcover', 'rocket-books' ),
+				'audio'     => __( 'Audio', 'rocket-books' ),
+				'pdf'       => __( 'PDF', 'rocket-books' ),
+			),
+			'default' => 'no-format'
 		) );
 
 
