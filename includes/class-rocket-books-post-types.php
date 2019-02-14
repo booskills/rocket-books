@@ -95,7 +95,8 @@ class Rocket_Books_Post_Types {
 			'capabilities'         => array(),
 			'map_meta_cap'         => null,
 			'supports'             => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
-			'register_meta_box_cb' => array( $this, 'register_metabox_book' ),
+//			'register_meta_box_cb' => array( $this, 'register_metabox_book' ),
+			'register_meta_box_cb' => null,
 			'taxonomies'           => array( 'genre' ),
 			'has_archive'          => true,
 			'rewrite'              => array(
@@ -412,6 +413,29 @@ class Rocket_Books_Post_Types {
 				$book_format
 			);
 		}
+
+
+	}
+
+
+	/**
+	 * Adding Metaboxes using CMB2 framework
+	 */
+	public function register_cmb2_metabox_book() {
+
+
+		$metabox = new_cmb2_box( array(
+			'id'           => 'book-details',
+			'title'        => __( 'Book Details from CMB2', 'rocket-books' ),
+			'object_types' => array( 'book' ),
+			'context'      => 'side'
+		) );
+
+		$metabox->add_field( array(
+			'id'   => 'rbr_book_pages',
+			'name' => __( 'Number of Pages', 'rocket-books' ),
+			'type' => 'text'
+		) );
 
 
 	}
