@@ -129,7 +129,7 @@ class Rocket_Books_Admin {
 
 		add_submenu_page(
 			'edit.php?post_type=book',
-			'Rocket Books Settings',
+			'Rocket Books Settings Page',
 			'Rocket Books',
 			'manage_options',
 			'rocket-books',
@@ -145,7 +145,9 @@ class Rocket_Books_Admin {
 	public function admin_page_display() {
 
 		// Old method of saving options
-		include 'partials/rocket-books-admin-display-form-method.php';
+//		include 'partials/rocket-books-admin-display-form-method.php';
+
+		include 'partials/rocket-books-admin-display.php';
 
 	}
 

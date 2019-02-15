@@ -12,3 +12,24 @@
  * @subpackage Rocket_Books/admin/partials
  */
 
+?>
+
+<div class="wrap">
+    <h1><?php echo get_admin_page_title(); ?></h1>
+
+    <form method="post" action="options.php">
+		<?php
+
+        // Security
+		settings_fields('rbr-settings-page-options-group');
+
+		// Display Section
+		do_settings_sections( 'rbr-settings-page' )
+
+
+		?>
+
+
+		<?php submit_button(); ?>
+    </form>
+</div>
