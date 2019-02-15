@@ -187,6 +187,16 @@ class Rocket_Books {
 			'add_admin_menu'
 		);
 
+		/**
+		 * Hooks for admin_init
+		 */
+		$this->loader->add_action(
+			'admin_init',
+			$plugin_admin,
+			'admin_init'
+		);
+
+
 
 	}
 
