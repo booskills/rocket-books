@@ -16,49 +16,55 @@
  * @since Twenty Sixteen 1.0
  */
 
+delete_option('rbr_archive_column');
+
+$archive_columns = get_option( 'rbr_archive_column' );
+
+$archive_columns = ( ! empty( $archive_columns ) ) ? $archive_columns : 'column-three';
+
 get_header(); ?>
 
-		<?php if ( have_posts() ) : ?>
+<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
-
-			<div class="cpt-cards column-three">
-			<?php
-			// Start the Loop.
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-//				 get_template_part( 'template-parts/content', get_post_format() );
-				include ROCKET_BOOKS_BASE_DIR . 'templates/archive/content-book.php';
-
-
-				// End the loop.
-			endwhile;
-
-			// Previous/next page navigation.
-			the_posts_pagination(
-				array(
-					'prev_text'          => __( 'Previous page', 'twentysixteen' ),
-					'next_text'          => __( 'Next page', 'twentysixteen' ),
-					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
-				)
-			);
-
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
+    <header class="page-header">
+		<?php
+		the_archive_title( '<h1 class="page-title">', '</h1>' );
+		the_archive_description( '<div class="taxonomy-description">', '</div>' );
 		?>
-			</div>
+    </header><!-- .page-header -->
+
+<div class="cpt-cards <?php echo sanitize_html_class( $archive_columns ) ?>">
+	<?php
+	// Start the Loop.
+	while ( have_posts() ) :
+		the_post();
+
+		/*
+		 * Include the Post-Format-specific template for the content.
+		 * If you want to override this in a child theme, then include a file
+		 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+		 */
+//				 get_template_part( 'template-parts/content', get_post_format() );
+		include ROCKET_BOOKS_BASE_DIR . 'templates/archive/content-book.php';
+
+
+		// End the loop.
+	endwhile;
+
+	// Previous/next page navigation.
+	the_posts_pagination(
+		array(
+			'prev_text'          => __( 'Previous page', 'twentysixteen' ),
+			'next_text'          => __( 'Next page', 'twentysixteen' ),
+			'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentysixteen' ) . ' </span>',
+		)
+	);
+
+	// If no content, include the "No posts found" template.
+	else :
+		get_template_part( 'template-parts/content', 'none' );
+
+	endif;
+	?>
+</div>
 <?php get_footer(); ?>
