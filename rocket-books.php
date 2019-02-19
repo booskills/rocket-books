@@ -43,6 +43,11 @@ define( 'ROCKET_BOOKS_VERSION', '1.0.0' );
  */
 define( 'ROCKET_BOOKS_NAME', 'rocket-books' );
 
+/**
+ * Plugin Base FILE
+ */
+define( 'ROCKET_BOOKS_BASE_FILE', __FILE__ );
+
 
 /**
  * Plugin base dir path.

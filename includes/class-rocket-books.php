@@ -197,6 +197,15 @@ class Rocket_Books {
 		);
 
 
+		/**
+		 * Hooks for Plugin Action Links
+		 */
+		$this->loader->add_action(
+			'plugin_action_links_' . plugin_basename( ROCKET_BOOKS_BASE_FILE ),
+			$plugin_admin,
+			'add_plugin_action_links'
+		);
+
 
 	}
 
