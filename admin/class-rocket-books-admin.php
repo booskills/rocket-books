@@ -412,6 +412,7 @@ class Rocket_Books_Admin {
 		require_once ROCKET_BOOKS_BASE_DIR . 'vendor/boo-settings-helper/class-boo-settings-helper.php';
 
 		$rocket_books_settings = array(
+			'tabs'     => true,
 			'prefix'   => 'rbr_',
 			'menu'     => array(
 				'slug'       => 'rocket-books',
@@ -452,6 +453,149 @@ class Rocket_Books_Admin {
 							'column-four'  => __( 'Four Columns', 'rocket-books' ),
 							'column-five'  => __( 'ThreFivee Columns', 'rocket-books' ),
 						)
+					),
+					array(
+						'id'                => 'text_field1',
+						'label'             => __( 'Abs Int', 'rocket-books' ),
+						'desc'              => __( 'Text input description', 'rocket-books' ),
+						'placeholder'       => __( 'Text Input placeholder', 'rocket-books' ),
+						'type'              => 'text',
+						'default'           => 'Title',
+						'sanitize_callback' => 'absint'
+					),
+					array(
+						'id'    => 'color_test',
+						'label' => __( 'Advance Field 1', 'rocket-books' ),
+						'type'  => 'color',
+					),
+					array(
+						'id'                => 'number_field1',
+						'label'             => __( 'Number Input', 'rocket-books' ),
+						'desc'              => __( 'Number field with validation callback `floatval`', 'rocket-books' ),
+						'placeholder'       => __( '1.99', 'rocket-books' ),
+//						'min'               => 0,
+//						'max'               => 99,
+//						'step'              => '0.01',
+						'type'              => 'number',
+						'default'           => '50',
+						'sanitize_callback' => 'floatval'
+					),
+					array(
+						'id'          => 'textarea_field1',
+						'label'       => __( 'Textarea Input', 'rocket-books' ),
+						'desc'        => __( 'Textarea description', 'rocket-books' ),
+						'placeholder' => __( 'Textarea placeholder', 'rocket-books' ),
+						'type'        => 'textarea'
+					),
+					array(
+						'id'   => 'html',
+						'desc' => __( 'HTML area description. You can use any <strong>bold</strong> or other HTML elements.', 'rocket-books' ),
+						'type' => 'html'
+					),
+					array(
+						'id'    => 'checkbox_field1',
+						'label' => __( 'Checkbox', 'rocket-books' ),
+						'desc'  => __( 'Checkbox Label', 'rocket-books' ),
+						'type'  => 'checkbox',
+						''
+					),
+
+					array(
+						'id'      => 'multi_op_test',
+						'label'   => __( 'Radio Button', 'rocket-books' ),
+						'desc'    => __( 'A radio button', 'rocket-books' ),
+						'type'    => 'multicheck',
+						'options' => array(
+							'multi_1' => 'Radio 1',
+							'multi_2' => 'Radio 2',
+							'multi_3' => 'Radio 3'
+						),
+						'default' => array(
+							'multi_1' => 'multi_1',
+							'multi_3' => 'multi_3'
+						)
+					),
+					array(
+						'id'      => 'radio_test2',
+						'label'   => __( 'Radio Button', 'rocket-books' ),
+						'desc'    => __( 'A radio button', 'rocket-books' ),
+						'type'    => 'radio',
+						'options' => array(
+							'radio_1' => 'Radio 1',
+							'radio_2' => 'Radio 2',
+							'radio_3' => 'Radio 3'
+						),
+						'default' => array(
+							'radio_1' => 'radio_1',
+							'radio_2' => 'radio_2'
+						)
+					),
+
+					array(
+						'id'      => 'select_test1',
+						'label'   => __( 'A Dropdown', 'rocket-books' ),
+						'desc'    => __( 'Dropdown description', 'rocket-books' ),
+						'type'    => 'select',
+						'default' => 'option_2',
+						'options' => array(
+							'option_1' => 'Option 1',
+							'option_2' => 'Option 2',
+							'option_3' => 'Option 3'
+						),
+					),
+
+					array(
+						'id'      => 'pages_test',
+						'label'   => __( 'Pages Field Type', 'rocket-books' ),
+						'desc'    => __( 'List of Pages', 'rocket-books' ),
+						'type'    => 'pages',
+						'options' => array(
+							'post_type' => 'post'
+						),
+//						'post_type' => 'page'
+					),
+
+					array(
+						'id'      => 'posts_test',
+						'label'   => __( 'Posts Field Type', 'rocket-books' ),
+//						'desc'    => __( 'List of Posts', 'rocket-books' ),
+						'type'    => 'posts',
+						'options' => array(
+							'post_type' => 'event'
+						),
+
+					),
+
+					array(
+						'id'      => 'password_test',
+						'label'   => __( 'Password', 'rocket-books' ),
+						'desc'    => __( 'Password description', 'rocket-books' ),
+						'type'    => 'password',
+						'default' => '',
+					),
+					array(
+						'id'      => 'file_test',
+						'label'   => __( 'File', 'rocket-books' ),
+						'desc'    => __( 'File description', 'rocket-books' ),
+						'type'    => 'file',
+						'default' => '',
+						'options' => array(
+							'btn' => 'Get it'
+						)
+					),
+					array(
+						'id'      => 'media_test',
+						'label'   => __( 'Media', 'rocket-books' ),
+						'desc'    => __( 'Media', 'rocket-books' ),
+						'type'    => 'media',
+						'default' => '',
+						'options' => array(
+							'btn'       => 'Get the image',
+							'width'     => 900,
+//							'height'    => 300,
+							'max_width' => 900
+						)
+
 					)
 				),
 				'rbr_advance_section' => array(
