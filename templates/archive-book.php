@@ -16,7 +16,7 @@
  * @since Twenty Sixteen 1.0
  */
 
-delete_option('rbr_archive_column');
+//delete_option('rbr_archive_column');
 
 $archive_columns = get_option( 'rbr_archive_column' );
 

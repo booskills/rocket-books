@@ -384,7 +384,7 @@ class Rocket_Books_Admin {
 				echo "<option
                 value='{$option_key}'" .
 				     selected( $option_key, $value )
-				     .">{$option_label}</option>";
+				     . ">{$option_label}</option>";
 			}
 			?>
         </select>
@@ -397,10 +397,48 @@ class Rocket_Books_Admin {
 	/**
 	 * Add Plugin Action Links
 	 */
-	public function add_plugin_action_links($links) {
-		$links[] = '<a href="'. esc_url( get_admin_url(null, 'edit.php?post_type=book&page=rocket-books') ) .'">Settings</a>';
+	public function add_plugin_action_links( $links ) {
+		$links[] = '<a href="' . esc_url( get_admin_url( null, 'edit.php?post_type=book&page=rocket-books' ) ) . '">Settings</a>';
 
 		return $links;
+	}
+
+
+	/**
+	 * To add Plugin Menu and Settings page
+	 */
+	public function plugin_menu_settings_using_helper() {
+
+		require_once ROCKET_BOOKS_BASE_DIR . 'vendor/boo-settings-helper/class-boo-settings-helper.php';
+
+		$rocket_books_settings = array(
+			'menu'     => array(
+				'slug'       => 'rocket-books',
+				'page_title' => __( 'Rocket Books Settings', 'rocket-books' ),
+				'menu_title' => __( 'Rocket Books ', 'rocket-books' ),
+				'parent'     => 'edit.php?post_type=book',
+				'submenu'    => true
+			),
+			'sections' => array(
+				//General Section
+				array(
+					'id'    => 'rbr_general_section',
+					'title' => __( 'General Section', 'rocket-books' ),
+					'desc'  => __( 'These are general settings', 'rocket-books' ),
+				),
+				//Advance Section
+				array(
+					'id'    => 'rbr_advance_section',
+					'title' => __( 'Advance Section', 'rocket-books' ),
+					'desc'  => __( 'These are advance settings', 'rocket-books' ),
+				)
+
+			)
+
+		);
+
+		new Boo_Settings_Helper( $rocket_books_settings );
+
 	}
 
 
