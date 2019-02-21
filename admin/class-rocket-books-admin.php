@@ -412,6 +412,7 @@ class Rocket_Books_Admin {
 		require_once ROCKET_BOOKS_BASE_DIR . 'vendor/boo-settings-helper/class-boo-settings-helper.php';
 
 		$rocket_books_settings = array(
+			'prefix'   => 'rbr_',
 			'menu'     => array(
 				'slug'       => 'rocket-books',
 				'page_title' => __( 'Rocket Books Settings', 'rocket-books' ),
@@ -432,7 +433,37 @@ class Rocket_Books_Admin {
 					'title' => __( 'Advance Section', 'rocket-books' ),
 					'desc'  => __( 'These are advance settings', 'rocket-books' ),
 				)
-
+			),
+			'fields'   => array(
+				// fields for General section
+				'rbr_general_section' => array(
+					array(
+						'id'                => 'test_field',
+						'label'             => __( 'Test Field', 'rocket-books' ),
+						'sanitize_callback' => 'absint'
+					),
+					array(
+						'id'      => 'archive_column',
+						'label'   => __( 'Archive Column', 'rocket-books' ),
+						'type'    => 'select',
+						'options' => array(
+							'column-two'   => __( 'Two Columns', 'rocket-books' ),
+							'column-three' => __( 'Three Columns', 'rocket-books' ),
+							'column-four'  => __( 'Four Columns', 'rocket-books' ),
+							'column-five'  => __( 'ThreFivee Columns', 'rocket-books' ),
+						)
+					)
+				),
+				'rbr_advance_section' => array(
+					array(
+						'id'    => 'advance_field1',
+						'label' => __( 'Advance Field 1', 'rocket-books' ),
+					),
+					array(
+						'id'    => 'advance_field2',
+						'label' => __( 'Advance Field 2', 'rocket-books' ),
+					)
+				)
 			)
 
 		);
