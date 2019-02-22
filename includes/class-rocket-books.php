@@ -114,6 +114,11 @@ class Rocket_Books {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-rocket-books-global.php';
 
 		/**
+		 * Contains helper functions
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/helper-functions.php';
+
+		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
