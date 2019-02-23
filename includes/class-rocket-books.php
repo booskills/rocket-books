@@ -88,6 +88,8 @@ class Rocket_Books {
 
 		$this->define_post_type_hooks();
 
+		$this->define_shortcode_hooks();
+
 	}
 
 	/**
@@ -335,6 +337,23 @@ class Rocket_Books {
 			'register_cmb2_metabox_book'
 		);
 
+
+	}
+
+
+	/**
+	 * Defining all shortcodes for the plugin
+	 */
+	public function define_shortcode_hooks() {
+
+
+		/**
+		 * Adding Shortcode
+		 */
+		add_shortcode( 'book_list', function ( $atts, $content ) {
+			return "i am shortcode" . "<br/>" . "contents are: {$content}" . "<br/>" . var_export( $atts, true );
+		} );
+		// Usage [book_list limit=5 column=3]These are contents of shortcode[/book_list]
 
 	}
 
