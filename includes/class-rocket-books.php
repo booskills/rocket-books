@@ -154,6 +154,10 @@ class Rocket_Books {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-rocket-books-post-types.php';
 
+		/**
+		 * The class responsible for defining all shortcode related functionality
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-rocket-books-shortcodes.php';
 
 		$this->loader = new Rocket_Books_Loader();
 
@@ -347,13 +351,18 @@ class Rocket_Books {
 	public function define_shortcode_hooks() {
 
 
+		$plugin_shortcodes = new Rocket_Books_Shortcodes(
+			$this->get_plugin_name(),
+			$this->get_version()
+		);
+
 		/**
 		 * Adding Shortcode
 		 */
-		add_shortcode( 'book_list', function ( $atts, $content ) {
-			return "i am shortcode" . "<br/>" . "contents are: {$content}" . "<br/>" . var_export( $atts, true );
-		} );
-		// Usage [book_list limit=5 column=3]These are contents of shortcode[/book_list]
+
+		add_shortcode( 'book_list', array( $plugin_shortcodes, 'book_list' ) );
+
+
 
 	}
 
