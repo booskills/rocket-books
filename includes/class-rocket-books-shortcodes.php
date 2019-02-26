@@ -54,7 +54,8 @@ if ( ! class_exists( 'Rocket_Books_Shortcodes' ) ) {
 
 			$atts = shortcode_atts(
 				array(
-					'limit' => get_option( 'posts_per_page' )
+					'limit'  => get_option( 'posts_per_page' ),
+					'column' => 3,
 				),
 				$atts,
 				'book_list'
@@ -67,6 +68,8 @@ if ( ! class_exists( 'Rocket_Books_Shortcodes' ) ) {
 
 			$loop = new WP_Query( $loop_args );
 
+			$grid_column = rbr_get_column_class( $atts['column'] );
+
 			/**
 			 * When using Template Loader
 			 */
@@ -74,7 +77,7 @@ if ( ! class_exists( 'Rocket_Books_Shortcodes' ) ) {
 
 			ob_start();
 			?>
-            <div class="cpt-cards column-three">
+            <div class="cpt-cards <?php echo sanitize_html_class( $grid_column ); ?>">
 				<?php
 				// Start the Loop.
 				while ( $loop->have_posts() ) :
