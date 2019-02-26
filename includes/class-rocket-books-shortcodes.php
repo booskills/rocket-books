@@ -54,8 +54,9 @@ if ( ! class_exists( 'Rocket_Books_Shortcodes' ) ) {
 
 			$atts = shortcode_atts(
 				array(
-					'limit'  => get_option( 'posts_per_page' ),
-					'column' => 3,
+					'limit'   => get_option( 'posts_per_page' ),
+					'column'  => 3,
+					'bgcolor' => '#f6f6f6'
 				),
 				$atts,
 				'book_list'
@@ -77,7 +78,13 @@ if ( ! class_exists( 'Rocket_Books_Shortcodes' ) ) {
 
 			ob_start();
 			?>
-            <div class="cpt-cards <?php echo sanitize_html_class( $grid_column ); ?>">
+            <style>
+                .cpt-cards.cpt-shortcodes .cpt-card {
+                    background-color: <?php echo rbr_sanitize_color($atts['bgcolor']); ?>;
+                }
+            </style>
+
+            <div class="cpt-cards cpt-shortcodes <?php echo sanitize_html_class( $grid_column ); ?>">
 				<?php
 				// Start the Loop.
 				while ( $loop->have_posts() ) :

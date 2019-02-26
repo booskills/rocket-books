@@ -57,3 +57,19 @@ function rbr_get_column_class( $int ) {
 	}
 
 }
+
+
+function rbr_sanitize_color( $value ) {
+
+	if ( false === strpos( $value, 'rgba' ) ) {
+		return sanitize_hex_color( $value );
+	} else {
+		// By now we know the string is formatted as an rgba color so we need to further sanitize it.
+
+		$value = trim( $value, ' ' );
+		$red   = $green = $blue = $alpha = '';
+		sscanf( $value, 'rgba(%d,%d,%d,%f)', $red, $green, $blue, $alpha );
+
+		return 'rgba(' . $red . ',' . $green . ',' . $blue . ',' . $alpha . ')';
+	}
+}
