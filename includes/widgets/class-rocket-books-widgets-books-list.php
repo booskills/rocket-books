@@ -30,8 +30,36 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
 		 */
 		public function widget( $args, $instance ) {
 			// outputs the content of the widget
+//			$args array keys
+//			array (
+//				0 => 'name',
+//				1 => 'id',
+//				2 => 'description',
+//				3 => 'class',
+//				4 => 'before_widget',
+//				5 => 'after_widget',
+//				6 => 'before_title',
+//				7 => 'after_title',
+//				8 => 'widget_id',
+//				9 => 'widget_name',
+//			)
 
-			echo "This is widget method";
+
+
+			echo $args['before_widget'];
+			echo $args['before_title'];
+			// Title will be displayed here
+			echo "Books List";
+			echo $args['after_title'];
+
+//			echo "<pre>";
+//			var_export( array_keys( $instance ) );
+//			echo "</pre>";
+
+			echo $args['after_widget'];
+
+
+//			echo "This is widget method";
 		}
 
 		/**
