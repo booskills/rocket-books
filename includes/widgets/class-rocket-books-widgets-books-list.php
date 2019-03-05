@@ -44,6 +44,7 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
 //				9 => 'widget_name',
 //			)
 			$title = isset( $instance['title'] ) ? $instance['title'] : '';
+			$limit = isset( $instance['limit'] ) ? $instance['limit'] : 5;
 
 			echo $args['before_widget'];
 			echo $args['before_title'];
@@ -52,6 +53,25 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
 			echo $args['after_title'];
 
 			// Loop for CPTs
+
+			$loop_args = array(
+				'post_type'      => 'book',
+				'posts_per_page' => $limit
+			);
+
+			$loop = new WP_Query( $loop_args );
+
+			echo '<div class="cpt-cards-widget">';
+			// Start the loop
+			while ( $loop->have_posts() ):
+				$loop->the_post();
+
+			    include ROCKET_BOOKS_BASE_DIR . 'templates/widgets/content-book.php';
+
+			endwhile;
+
+
+			echo '</div>';
 
 
 //			echo "<pre>";
