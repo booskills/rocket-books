@@ -43,17 +43,19 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
 //				8 => 'widget_id',
 //				9 => 'widget_name',
 //			)
-
-
+			$title = isset( $instance['title'] ) ? $instance['title'] : '';
 
 			echo $args['before_widget'];
 			echo $args['before_title'];
 			// Title will be displayed here
-			echo "Books List";
+			echo esc_html( $title );
 			echo $args['after_title'];
 
 //			echo "<pre>";
-//			var_export( array_keys( $instance ) );
+//			var_export( $instance );
+//
+//			var_export( get_option( 'widget_rbr_books_list', true ) );
+//
 //			echo "</pre>";
 
 			echo $args['after_widget'];
@@ -69,7 +71,21 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
 		 */
 		public function form( $instance ) {
 			// outputs the options form on admin
-			echo "This is form method";
+//			echo "This is form method";
+
+			$title = isset( $instance['title'] ) ? $instance['title'] : '';
+
+			?>
+            <p>
+                <label for="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"><?php _e('Title:' , 'rocket-books'); ?></label>
+                <input type="text" class="widefat"
+                       id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+                       name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
+                       value="<?php echo esc_html( $title ); ?>"
+                >
+            </p>
+			<?php
+
 		}
 
 		/**
