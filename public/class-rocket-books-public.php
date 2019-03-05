@@ -77,6 +77,14 @@ class Rocket_Books_Public {
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/rocket-books-public.css', array(), $this->version, 'all' );
 
 
+		wp_register_style(
+			$this->plugin_name . '-widgets',
+			plugin_dir_url( __FILE__ ) . 'css/rocket-books-widgets.css',
+			array(),
+			$this->version,
+			'all'
+		);
+
 		if ( is_singular( 'book' ) ) {
 			wp_enqueue_style( $this->plugin_name . '-single-book', plugin_dir_url( __FILE__ ) . 'css/rocket-books-book-single.css', array(), $this->version, 'all' );
 		}
@@ -85,6 +93,18 @@ class Rocket_Books_Public {
 			wp_enqueue_style( $this->plugin_name . '-fontawesome',
 				ROCKET_BOOKS_PLUGIN_URL . 'vendor/fontawesome/css/all.css', array(), $this->version, 'all' );
 		}
+
+		if(is_active_widget(
+			false,
+			false,
+			'rbr_books_list',
+			true
+		)){
+			wp_enqueue_style( $this->plugin_name . '-widgets' );
+
+		}
+
+
 
 
 	}
