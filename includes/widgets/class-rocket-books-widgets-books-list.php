@@ -43,8 +43,9 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
 //				8 => 'widget_id',
 //				9 => 'widget_name',
 //			)
-			$title = isset( $instance['title'] ) ? $instance['title'] : '';
-			$limit = isset( $instance['limit'] ) ? $instance['limit'] : 5;
+			$title  = isset( $instance['title'] ) ? $instance['title'] : '';
+			$limit  = isset( $instance['limit'] ) ? $instance['limit'] : 5;
+			$format = isset( $instance['format'] ) ? $instance['format'] : '';
 
 			echo $args['before_widget'];
 			echo $args['before_title'];
@@ -59,6 +60,16 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
 				'posts_per_page' => $limit
 			);
 
+			if ( ! empty( $format ) ) {
+				$loop_args['meta_query'] = array(
+					array(
+						'key'     => 'rbr_book_format',
+						'value'   => $format,
+						'compare' => '='
+					)
+				);
+			}
+
 			$loop = new WP_Query( $loop_args );
 
 			echo '<div class="cpt-cards-widget">';
@@ -66,7 +77,7 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
 			while ( $loop->have_posts() ):
 				$loop->the_post();
 
-			    include ROCKET_BOOKS_BASE_DIR . 'templates/widgets/content-book.php';
+				include ROCKET_BOOKS_BASE_DIR . 'templates/widgets/content-book.php';
 
 			endwhile;
 
@@ -99,6 +110,8 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
 			$title = isset( $instance['title'] ) ? $instance['title'] : '';
 
 			$limit = isset( $instance['limit'] ) ? $instance['limit'] : 5;
+
+			$format = isset( $instance['format'] ) ? $instance['format'] : '';
 			?>
             <p>
                 <label for="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"><?php _e( 'Title:', 'rocket-books' ); ?></label>
@@ -119,6 +132,38 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
             </p>
 			<?php
 
+			$format_select_options = array(
+				''          => __( 'All', 'rocket-books' ),
+				'hardcover' => __( 'Hardcover', 'rocket-books' ),
+				'audio'     => __( 'Audio', 'rocket-books' ),
+				'pdf'       => __( 'PDF', 'rocket-books' )
+			);
+
+			printf(
+				'<p><label for="%s">%s</label>',
+				$this->get_field_name( 'format' ),
+				__( 'Format', 'rocket-books' )
+			);
+
+
+			printf(
+				'<select id="%s" name="%s" class="widefat">',
+				$this->get_field_id( 'format' ),
+				$this->get_field_name( 'format' )
+			);
+			// Output options
+			foreach ( $format_select_options as $value => $label ) {
+				printf(
+					'<option value="%s" %s>%s</option>',
+					$value,
+					selected( $value, $format ),
+					$label
+				);
+			}
+
+			echo "</select></p>";
+
+
 		}
 
 		/**
@@ -134,8 +179,9 @@ if ( ! class_exists( 'Rocket_Books_Widget_Books_List' ) ) {
 
 			// Sanitization of $new_instance
 
-			$sanitized_instance['title'] = sanitize_text_field( $new_instance['title'] );
-			$sanitized_instance['limit'] = absint( $new_instance['limit'] );
+			$sanitized_instance['title']  = sanitize_text_field( $new_instance['title'] );
+			$sanitized_instance['limit']  = absint( $new_instance['limit'] );
+			$sanitized_instance['format'] = sanitize_key( $new_instance['format'] );
 
 			return $sanitized_instance;
 
