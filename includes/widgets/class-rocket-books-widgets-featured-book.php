@@ -22,9 +22,63 @@ if ( ! class_exists( 'Rocket_Books_Widget_Featured_Book' ) ) {
 				'desc' => __( 'Display your Featured Book', 'rocket-books' ),
 			);
 
+			$this->set_fields( $this->get_fields_args() );
 
 			parent::__construct( $config_array );
 		}
+
+		/**
+		 * fields arguments array
+		 */
+		public function get_fields_args() {
+
+			$fields_args = array(
+				array(
+					'id'    => 'title',
+					'label' => __( 'Title', 'rocket-books' ),
+				),
+				array(
+					'id'    => 'text_color',
+					'type'  => 'color',
+					'label' => __( 'Text Color', 'rocket-books' ),
+				),
+				array(
+					'id'    => 'bgcolor',
+					'type'  => 'color',
+					'label' => __( 'Background Color', 'rocket-books' ),
+				),
+
+
+			);
+
+
+			return $fields_args;
+		}
+
+		/**
+		 * Display widget after the title
+		 */
+		public function widget_display( $args, $instance ) {
+
+//			echo "<pre>";
+//			var_export( $instance );
+//			echo "</pre>";
+
+			// text color
+			$text_color = isset( $instance['text_color'] ) ? $instance['text_color'] : '';
+			// bg color
+			$bgcolor = isset( $instance['bgcolor'] ) ? $instance['bgcolor'] : '';
+			// post id to be shown
+
+
+			echo do_shortcode( "[book_list 
+										column=1
+										limit=1
+										color={$text_color}
+										bgcolor={$bgcolor}
+										 ]" );
+		}
+
 
 	}
 }
