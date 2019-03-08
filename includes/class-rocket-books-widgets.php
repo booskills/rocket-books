@@ -42,6 +42,16 @@ if ( ! class_exists( 'Rocket_Books_Widgets' ) ) {
 			$this->plugin_name = $plugin_name;
 			$this->version     = $version;
 
+			$this->load_dependency();
+
+		}
+
+		/**
+		 * Load Widget class deps
+		 */
+		public function load_dependency() {
+
+			require_once ROCKET_BOOKS_BASE_DIR . 'vendor/boo-widget-helper/class-boo-widget-helper.php';
 		}
 
 		/**
@@ -52,6 +62,11 @@ if ( ! class_exists( 'Rocket_Books_Widgets' ) ) {
 			require_once ROCKET_BOOKS_BASE_DIR.'includes/widgets/class-rocket-books-widgets-books-list.php';
 
 			register_widget('Rocket_Books_Widget_Books_List');
+
+			require_once ROCKET_BOOKS_BASE_DIR.'includes/widgets/class-rocket-books-widgets-featured-book.php';
+
+			register_widget('Rocket_Books_Widget_Featured_Book');
+
 		}
 
 	}
