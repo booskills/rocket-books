@@ -87,7 +87,8 @@ if ( ! class_exists( 'Rocket_Books_Shortcodes' ) ) {
 					'column'  => 3,
 					'bgcolor' => '',
 					'color'   => '',
-					'genre'   => ''
+					'genre'   => '',
+					'book_id' => '',
 				),
 				$atts,
 				'book_list'
@@ -95,16 +96,19 @@ if ( ! class_exists( 'Rocket_Books_Shortcodes' ) ) {
 
 			$loop_args = array(
 				'post_type'      => 'book',
-				'posts_per_page' => $atts['limit'],
+				'posts_per_page' => absint( $atts['limit'] ),
 			);
 
+			if ( ! empty( $atts['book_id'] ) ) {
+				$loop_args['p'] = absint( $atts['book_id'] );
+			}
 
 			if ( ! empty( $atts['genre'] ) ) {
 				$loop_args['tax_query'] = array(
 					array(
 						'taxonomy' => 'genre',
 						'field'    => 'slug',
-						'terms'    => explode(',' , $atts['genre']), //    'unique,test'
+						'terms'    => explode( ',', $atts['genre'] ), //    'unique,test'
 					),
 //					array(
 //						'taxonomy' => 'genre',

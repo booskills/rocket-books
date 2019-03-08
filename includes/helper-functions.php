@@ -38,6 +38,9 @@ function rbr_get_column_class( $int ) {
 
 	switch ( $int ) {
 
+		case( 1 ):
+			return 'column-one';
+			break;
 		case( 2 ):
 			return 'column-two';
 			break;

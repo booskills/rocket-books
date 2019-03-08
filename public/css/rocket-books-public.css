@@ -80,6 +80,13 @@
         padding: 1em;
     }
 
+    .column-one .cpt-card {
+        -webkit-flex: 0 1 calc(100% - 1em);
+        -ms-flex: 0 1 calc(100% - 1em);
+        flex: 0 1 calc(100% - 1em);
+        margin-bottom: 2em;
+    }
+
 
     .column-three .cpt-card {
         -webkit-flex: 0 1 calc(33% - 1em);
