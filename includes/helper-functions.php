@@ -1,5 +1,8 @@
 <?php
-
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+}
 
 function rbr_is_single_or_archive_book() {
 	return

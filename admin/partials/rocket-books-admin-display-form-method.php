@@ -1,5 +1,8 @@
 <?php
-
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+}
 /**
  * Provide a admin area view for the plugin
  *
@@ -12,10 +15,7 @@
  * @subpackage Rocket_Books/admin/partials
  */
 
-// If this file is called directly, abort.
-if ( ! defined( 'ABSPATH' ) ) {
-	die;
-}
+
 
 
 if ( isset( $_POST ) && ! empty( $_POST ) ) {

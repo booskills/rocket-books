@@ -1,12 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: BooSkills
- * Date: 2/13/2019
- * Time: 12:16 PM
- */
-
-
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+}
 ?>
 
 <ul class="book-meta-fields">

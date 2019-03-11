@@ -1,5 +1,8 @@
 <?php
-
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
+}
 /**
  * The public-facing functionality of the plugin.
  *
