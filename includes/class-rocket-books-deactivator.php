@@ -23,24 +23,26 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Rocket_Books/includes
  * @author     Rao <rao@booskills.com>
  */
-class Rocket_Books_Deactivator {
+if ( ! class_exists( 'Rocket_Books_Deactivator' ) ):
+	class Rocket_Books_Deactivator {
 
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.0
-	 */
-	public static function deactivate() {
+		/**
+		 * Short Description. (use period)
+		 *
+		 * Long Description.
+		 *
+		 * @since    1.0.0
+		 */
+		public static function deactivate() {
 
-		// Un-register CPT
+			// Un-register CPT
 
-		unregister_post_type('book');
+			unregister_post_type( 'book' );
 
-		// Flush Rewrite Rules
-		flush_rewrite_rules();
+			// Flush Rewrite Rules
+			flush_rewrite_rules();
+
+		}
 
 	}
-
-}
+endif;

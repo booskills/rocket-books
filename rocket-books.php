@@ -34,19 +34,19 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'ROCKET_BOOKS_VERSION', '1.0.0' );
+defined( 'ROCKET_BOOKS_VERSION' ) or define( 'ROCKET_BOOKS_VERSION', '1.0.0' );
 
 
 /**
  * Plugin Name.
  * used to hold plugin name that can be used for constructors of plugin classes.
  */
-define( 'ROCKET_BOOKS_NAME', 'rocket-books' );
+defined( 'ROCKET_BOOKS_NAME' ) or define( 'ROCKET_BOOKS_NAME', 'rocket-books' );
 
 /**
  * Plugin Base FILE
  */
-define( 'ROCKET_BOOKS_BASE_FILE', __FILE__ );
+defined( 'ROCKET_BOOKS_BASE_FILE' ) or define( 'ROCKET_BOOKS_BASE_FILE', __FILE__ );
 
 
 /**
@@ -54,7 +54,7 @@ define( 'ROCKET_BOOKS_BASE_FILE', __FILE__ );
  * used to locate plugin resources primarily code files
  * Start at version 1.0.0
  */
-define( 'ROCKET_BOOKS_BASE_DIR', plugin_dir_path( __FILE__ ) );
+defined( 'ROCKET_BOOKS_BASE_DIR' ) or define( 'ROCKET_BOOKS_BASE_DIR', plugin_dir_path( __FILE__ ) );
 
 
 /**
@@ -62,7 +62,7 @@ define( 'ROCKET_BOOKS_BASE_DIR', plugin_dir_path( __FILE__ ) );
  * used to access assets images/css/js files
  * Start at version 1.0.0
  */
-define( 'ROCKET_BOOKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+defined( 'ROCKET_BOOKS_PLUGIN_URL' ) or define( 'ROCKET_BOOKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 
 /**

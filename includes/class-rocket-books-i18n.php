@@ -27,24 +27,25 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Rocket_Books/includes
  * @author     Rao <rao@booskills.com>
  */
-class Rocket_Books_i18n {
+if ( ! class_exists( 'Rocket_Books_i18n' ) ) :
+	class Rocket_Books_i18n {
 
 
-	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since    1.0.0
-	 */
-	public function load_plugin_textdomain() {
+		/**
+		 * Load the plugin text domain for translation.
+		 *
+		 * @since    1.0.0
+		 */
+		public function load_plugin_textdomain() {
 
-		load_plugin_textdomain(
-			'rocket-books',
-			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
-		);
+			load_plugin_textdomain(
+				'rocket-books',
+				false,
+				dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			);
+
+		}
+
 
 	}
-
-
-
-}
+endif;
