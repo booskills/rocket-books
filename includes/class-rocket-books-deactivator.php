@@ -36,8 +36,10 @@ if ( ! class_exists( 'Rocket_Books_Deactivator' ) ):
 		public static function deactivate() {
 
 			// Un-register CPT
-
 			unregister_post_type( 'book' );
+
+			// Un-Register Taxonomy
+			unregister_taxonomy( 'genre' );
 
 			// Flush Rewrite Rules
 			flush_rewrite_rules();
