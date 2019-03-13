@@ -1,11 +1,16 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Language: \n"
 "POT-Creation-Date: 2019-03-13 07:16+0000\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: Loco https://localise.biz/"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"PO-Revision-Date: 2019-03-13 12:25+0500\n"
+"X-Generator: Poedit 2.2.1\n"
+"Project-Id-Version: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: \n"
+"Language: fr\n"
 
 #: admin/class-rocket-books-admin.php:234
 #: admin/class-rocket-books-admin.php:455
@@ -29,7 +34,7 @@ msgstr ""
 
 #: admin/class-rocket-books-admin.php:423
 msgid "Rocket Books Settings"
-msgstr ""
+msgstr "Paramètres de Rocket Books"
 
 #: admin/class-rocket-books-admin.php:424
 msgid "Rocket Books "
@@ -37,7 +42,7 @@ msgstr ""
 
 #: admin/class-rocket-books-admin.php:432
 msgid "General Section"
-msgstr ""
+msgstr "Section générale"
 
 #: admin/class-rocket-books-admin.php:433
 msgid "These are general settings"
@@ -45,7 +50,7 @@ msgstr ""
 
 #: admin/class-rocket-books-admin.php:438
 msgid "Advance Section"
-msgstr ""
+msgstr "Section avancée"
 
 #: admin/class-rocket-books-admin.php:439
 msgid "These are advance settings"
