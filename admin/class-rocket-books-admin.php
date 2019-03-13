@@ -602,14 +602,16 @@ if ( ! class_exists( 'Rocket_Books_Admin' ) ):
 
 						)
 					),
-					'rbr_advance_section' => array(
+					'rbr_advance_section' => apply_filters( 'rbr/admin/settings/advance/fields',
 						array(
-							'id'    => 'advance_field1',
-							'label' => __( 'Advance Field 1', 'rocket-books' ),
-						),
-						array(
-							'id'    => 'advance_field2',
-							'label' => __( 'Advance Field 2', 'rocket-books' ),
+							array(
+								'id'    => 'advance_field1',
+								'label' => __( 'Advance Field 1', 'rocket-books' ),
+							),
+							array(
+								'id'    => 'advance_field2',
+								'label' => __( 'Advance Field 2', 'rocket-books' ),
+							)
 						)
 					)
 				)
