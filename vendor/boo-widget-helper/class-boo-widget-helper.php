@@ -1140,7 +1140,7 @@ if ( ! class_exists( 'Boo_Widget_Helper' ) ) :
 
 			if ( in_array( 'color', $field_types ) ) {
 
-				wp_enqueue_style( 'wp-color-picker' );
+				wp_enqueue_style( 'wp-color-picker' ); 
 				wp_enqueue_script( 'wp-color-picker' );
 
 				$script =
