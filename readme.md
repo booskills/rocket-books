@@ -23,9 +23,11 @@ To use this method, you clone the repo in your local development and setup insid
 `git clone https://github.com/booskills/rocket-books.git`
 
 and then you go inside the plugin directory:
+
 `cd rocket-books`
 
-and simply checkout the required branch (09_07 in below example) using the command:
+and simply checkout the required branch (09_07 in example) using the command:
+
 `git checkout 09_07`
 
 
